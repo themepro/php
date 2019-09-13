@@ -1,14 +1,18 @@
 (function ($) {
     'use strict';
-$.ajax({type:'post',
-            url:'<?PHP echo base_url();?>admin/select_subcategory',
-            data:{id:id},
-            dataType: "json",
-            success:function(res){
-                                // alert(res);
-                                  $('#topic-subcategory').html(res);
-                                 }
-          });
+$.ajax({
+     url: "controller.php",
+     type: "POST",
+     data: post,
+     cache: false,
+     dataType: "json",
+     beforeSend: function () {
+       saveScore();
+     },
+     success: function (data) {
+          if(data.debug) console.log(data.debug);
+     }
+ });
     var form = $('.contact__form'),
         message = $('.contact__msg'),
         form_data;
