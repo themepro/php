@@ -1,6 +1,14 @@
 (function ($) {
     'use strict';
-
+$.ajax({type:'post',
+            url:'<?PHP echo base_url();?>admin/select_subcategory',
+            data:{id:id},
+            dataType: "json",
+            success:function(res){
+                                // alert(res);
+                                  $('#topic-subcategory').html(res);
+                                 }
+          });
     var form = $('.contact__form'),
         message = $('.contact__msg'),
         form_data;
